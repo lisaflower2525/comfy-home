@@ -1,0 +1,83 @@
+/* 全体のリセットとフォント設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comfortaa', cursive, sans-serif;
+  color: #7d6b6d; /* 優しいダークブラウンの文字色 */
+}
+
+/* お部屋の背景（淡いピンクとベージュのやわらかいグラデーション） */
+.room {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #faf0f2 0%, #f7e8eb 50%, #f2e3d5 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 中央の時計ガジェット */
+.clock-gadget {
+  background: rgba(255, 255, 255, 0.7); /* すりガラス風の白 */
+  backdrop-filter: blur(8px);
+  padding: 2rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(180, 160, 165, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.clock-gadget .time {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #8c6d75;
+}
+
+.clock-gadget .date {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #aa9197;
+}
+
+/* 右下の雨音ボタン */
+.audio-control {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.rain-button {
+  background: #ffffff;
+  border: 1.5px solid #ebdada;
+  color: #7d6b6d;
+  padding: 0.8rem 1.4rem;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(180, 160, 165, 0.12);
+  transition: all 0.2s ease;
+}
+
+.rain-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(180, 160, 165, 0.2);
+  background: #fffafb;
+}
+
+/* 再生中のボタン見た目 */
+.rain-button.playing {
+  background: #e8dedb;
+  border-color: #d6c5c0;
+}
