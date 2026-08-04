@@ -16,25 +16,31 @@
 
     <!-- 出窓エリア -->
     <div class="bay-window-container">
-      <div class="bay-window">
-        <!-- 窓の外（雨模様） -->
+      <p class="guide-text">↔ カーテンを左右にドラッグして開閉できます</p>
+      
+      <div class="bay-window" id="window-area">
+        <!-- 窓の外（しとしと降る雨） -->
         <div class="window-glass">
-          <div class="rain"></div>
+          <div class="rain-container">
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+          </div>
         </div>
 
         <!-- 赤いカーテン (左と右) -->
-        <div id="curtain-left" class="curtain curtain-left"></div>
-        <div id="curtain-right" class="curtain curtain-right"></div>
+        <div id="curtain-left" class="curtain curtain-left">
+          <div class="curtain-handle"></div>
+        </div>
+        <div id="curtain-right" class="curtain curtain-right">
+          <div class="curtain-handle"></div>
+        </div>
 
         <!-- 窓枠とカウンター（出窓の棚） -->
         <div class="window-frame-grid"></div>
         <div class="window-sill"></div>
-      </div>
-
-      <!-- カーテン調整用スライダー -->
-      <div class="curtain-controls">
-        <label for="curtain-slider">カーテン：</label>
-        <input type="range" id="curtain-slider" min="0" max="100" value="0">
       </div>
     </div>
 
