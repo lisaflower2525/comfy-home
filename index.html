@@ -3,34 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Cozy Room</title>
-  <!-- Google Fontsで可愛いフォントを読み込み -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&display=swap" rel="stylesheet">
-  <!-- CSSファイルの読み込み -->
+  <title>Cozy Room</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- お部屋の壁紙エリア -->
-  <main class="room">
-    <!-- 中央の時計ガジェット -->
-    <div class="clock-gadget">
-      <div id="clock-time" class="time">00:00:00</div>
-      <div id="clock-date" class="date">YYYY.MM.DD</div>
+  <div class="room">
+    <!-- 時計と日時 -->
+    <div class="clock-container">
+      <div id="date" class="date"></div>
+      <div id="time" class="time"></div>
     </div>
 
-    <!-- 右下の雨音コントロールボタン -->
-    <div class="audio-control">
-      <button id="rain-btn" class="rain-button">
-        <span class="icon">🌧️</span>
-        <span id="btn-text">雨の音を流す</span>
-      </button>
-    </div>
-  </main>
+    <!-- 出窓エリア -->
+    <div class="bay-window-container">
+      <div class="bay-window">
+        <!-- 窓の外（雨模様） -->
+        <div class="window-glass">
+          <div class="rain"></div>
+        </div>
 
-  <!-- JavaScriptファイルの読み込み -->
+        <!-- 赤いカーテン (左と右) -->
+        <div id="curtain-left" class="curtain curtain-left"></div>
+        <div id="curtain-right" class="curtain curtain-right"></div>
+
+        <!-- 窓枠とカウンター（出窓の棚） -->
+        <div class="window-frame-grid"></div>
+        <div class="window-sill"></div>
+      </div>
+
+      <!-- カーテン調整用スライダー -->
+      <div class="curtain-controls">
+        <label for="curtain-slider">カーテン：</label>
+        <input type="range" id="curtain-slider" min="0" max="100" value="0">
+      </div>
+    </div>
+
+    <!-- 雨音オーディオ -->
+    <audio id="rain-sound" loop src="https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg"></audio>
+    
+    <button id="audio-toggle" class="audio-btn">🔊 雨音の再生 / 停止</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
