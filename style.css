@@ -13,7 +13,6 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  user-select: none; /* テキスト選択を防止 */
 }
 
 .room {
@@ -46,7 +45,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* 出窓全体 */
+/* 出窓エリア */
 .bay-window-container {
   width: 100%;
   display: flex;
@@ -66,16 +65,12 @@ body {
   width: 280px;
   height: 220px;
   background: #182026;
-  /* 
-    修正：窓の木枠を「border（枠線）」で作るのではなく、
-    「box-shadow（影）」で作ることで、カーテンがつかめるようにしました。
-  */
+  border: 10px solid #5c3a21;
+  border-bottom: 16px solid #4a2e1a;
   border-radius: 8px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 25px rgba(0,0,0,0.5),
-              0 0 0 12px #5c3a21, 0 8px 0 12px #4a2e1a; /* 木枠を影で表現 */
-  margin: 12px; /* 木枠の分だけ余白を確保 */
-  touch-action: none; /* スマホでのスクロール干渉を防止 */
-  z-index: 1; /* 出窓エリア全体の優先度 */
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 10px 25px rgba(0,0,0,0.5);
+  cursor: pointer; /* クリックできることが分かりやすいカーソル */
 }
 
 /* 窓ガラスと背景 */
@@ -86,10 +81,9 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, #10161d, #1c2732);
-  z-index: 1; /* 窓ガラスを一番奥に */
 }
 
-/* 垂直に降る優しい雨 */
+/* 垂直に降る雨 */
 .rain-container {
   position: relative;
   width: 100%;
@@ -99,68 +93,41 @@ body {
 
 .rain-drop {
   position: absolute;
-  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.25)); /* 雨の色を少し薄く */
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.3));
   width: 1px;
-  height: 40px;
+  height: 35px;
   opacity: 0.5;
-  animation: fall linear infinite;
-  z-index: 2; /* 窓ガラスの上 */
+  animation: fall 1.2s linear infinite;
 }
 
-/* 雨の粒それぞれの位置とタイミングをランダムに */
-.rain-drop:nth-child(1) { left: 5%; animation-duration: 1.1s; animation-delay: 0.1s; }
-.rain-drop:nth-child(2) { left: 10%; animation-duration: 1.3s; animation-delay: 0.4s; }
-.rain-drop:nth-child(3) { left: 15%; animation-duration: 1.0s; animation-delay: 0.2s; }
-.rain-drop:nth-child(4) { left: 20%; animation-duration: 1.4s; animation-delay: 0.6s; }
-.rain-drop:nth-child(5) { left: 25%; animation-duration: 1.2s; animation-delay: 0.3s; }
-.rain-drop:nth-child(6) { left: 30%; animation-duration: 1.1s; animation-delay: 0.5s; }
-.rain-drop:nth-child(7) { left: 35%; animation-duration: 1.3s; animation-delay: 0.1s; }
-.rain-drop:nth-child(8) { left: 40%; animation-duration: 1.0s; animation-delay: 0.4s; }
-.rain-drop:nth-child(9) { left: 45%; animation-duration: 1.4s; animation-delay: 0.2s; }
-.rain-drop:nth-child(10) { left: 50%; animation-duration: 1.2s; animation-delay: 0.6s; }
-.rain-drop:nth-child(11) { left: 55%; animation-duration: 1.1s; animation-delay: 0.3s; }
-.rain-drop:nth-child(12) { left: 60%; animation-duration: 1.3s; animation-delay: 0.5s; }
-.rain-drop:nth-child(13) { left: 65%; animation-duration: 1.0s; animation-delay: 0.1s; }
-.rain-drop:nth-child(14) { left: 70%; animation-duration: 1.4s; animation-delay: 0.4s; }
-.rain-drop:nth-child(15) { left: 75%; animation-duration: 1.2s; animation-delay: 0.2s; }
-.rain-drop:nth-child(16) { left: 80%; animation-duration: 1.1s; animation-delay: 0.6s; }
-.rain-drop:nth-child(17) { left: 85%; animation-duration: 1.3s; animation-delay: 0.3s; }
-.rain-drop:nth-child(18) { left: 90%; animation-duration: 1.0s; animation-delay: 0.5s; }
-.rain-drop:nth-child(19) { left: 95%; animation-duration: 1.4s; animation-delay: 0.1s; }
-.rain-drop:nth-child(20) { left: 3%; animation-duration: 1.2s; animation-delay: 0.4s; }
-.rain-drop:nth-child(21) { left: 13%; animation-duration: 1.1s; animation-delay: 0.2s; }
-.rain-drop:nth-child(22) { left: 23%; animation-duration: 1.3s; animation-delay: 0.6s; }
-.rain-drop:nth-child(23) { left: 33%; animation-duration: 1.0s; animation-delay: 0.3s; }
-.rain-drop:nth-child(24) { left: 43%; animation-duration: 1.4s; animation-delay: 0.5s; }
-.rain-drop:nth-child(25) { left: 53%; animation-duration: 1.2s; animation-delay: 0.1s; }
-.rain-drop:nth-child(26) { left: 63%; animation-duration: 1.1s; animation-delay: 0.4s; }
-.rain-drop:nth-child(27) { left: 73%; animation-duration: 1.3s; animation-delay: 0.2s; }
-.rain-drop:nth-child(28) { left: 83%; animation-duration: 1.0s; animation-delay: 0.6s; }
-.rain-drop:nth-child(29) { left: 93%; animation-duration: 1.4s; animation-delay: 0.3s; }
-.rain-drop:nth-child(30) { left: 48%; animation-duration: 1.2s; animation-delay: 0.5s; }
+.rain-drop:nth-child(1) { left: 10%; animation-delay: 0.1s; }
+.rain-drop:nth-child(2) { left: 25%; animation-delay: 0.4s; }
+.rain-drop:nth-child(3) { left: 40%; animation-delay: 0.2s; }
+.rain-drop:nth-child(4) { left: 60%; animation-delay: 0.6s; }
+.rain-drop:nth-child(5) { left: 75%; animation-delay: 0.3s; }
+.rain-drop:nth-child(6) { left: 90%; animation-delay: 0.5s; }
 
 @keyframes fall {
-  0% { transform: translateY(-40px); }
+  0% { transform: translateY(-35px); }
   100% { transform: translateY(220px); }
 }
 
-/* 窓格子（十字の枠） */
+/* 窓格子 */
 .window-frame-grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border-right: 2px solid #5c3a21; /* 少し細く */
-  border-bottom: 2px solid #5c3a21; /* 少し細く */
+  border-right: 2px solid #5c3a21;
+  border-bottom: 2px solid #5c3a21;
   left: -50%;
   top: -50%;
-  pointer-events: none; /* マウスを貫通させる */
-  z-index: 3; /* 雨の上、カーテンの下 */
-  opacity: 0.6; /* 少し薄く */
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-/* 赤いカーテン（左右） */
+/* 赤いカーテン */
 .curtain {
   position: absolute;
   top: 0;
@@ -168,41 +135,22 @@ body {
   width: 50%;
   background: linear-gradient(to right, #8b1e24, #a8232a 50%, #72161b);
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 3px 0 8px rgba(0,0,0,0.4);
-  z-index: 10; /* 最前面に。これで窓枠に邪魔されずつかめる！ */
-  cursor: grab;
-  will-change: transform;
-}
-
-.curtain:active {
-  cursor: grabbing;
+  z-index: 2;
+  /* 0.6秒かけて滑らかにスライドする設定 */
+  transition: transform 0.6s ease-in-out; 
 }
 
 .curtain-left {
   left: 0;
-  transform: translateX(-80%); /* 最初は開いている状態 */
+  transform: translateX(-85%); /* 最初は開いている */
   border-right: 2px solid #500f13;
 }
 
 .curtain-right {
   right: 0;
-  transform: translateX(80%); /* 最初は開いている状態 */
+  transform: translateX(85%); /* 最初は開いている */
   border-left: 2px solid #500f13;
 }
-
-/* カーテン端のフチ */
-.curtain-handle {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px; /* 少し太くして触りやすく */
-  height: 40px; /* 少し長く */
-  background: rgba(255, 255, 255, 0.3); /* 少し明るく */
-  border-radius: 3px;
-  pointer-events: none; /* ハンドル自体は触れなくていい */
-}
-
-.curtain-left .curtain-handle { right: 8px; }
-.curtain-right .curtain-handle { left: 8px; }
 
 /* 出窓の棚 */
 .window-sill {
@@ -210,10 +158,10 @@ body {
   bottom: 0;
   left: -10px;
   width: calc(100% + 20px);
-  height: 10px;
+  height: 8px;
   background: #6e4628;
   box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-  z-index: 11; /* カーテンよりさらに手前に */
+  z-index: 3;
 }
 
 /* ボタン */
@@ -226,7 +174,6 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  margin-top: 10px;
 }
 
 .audio-btn:active {
